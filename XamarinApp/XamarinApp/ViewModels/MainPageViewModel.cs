@@ -5,6 +5,7 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
 using Xamarin.Forms;
+using XamarinApp.Views;
 
 namespace XamarinApp.ViewModels
 {
@@ -22,6 +23,13 @@ namespace XamarinApp.ViewModels
                 AllNotes.Add(TheNote);
                 TheNote = string.Empty;
             });
+            SelectedNoteChangedCommand = new Command(async () =>
+            {
+                var detailVM = new DetailPageViewModel(SelectedNote);
+                var detailPage = new DetailPage();
+                detailPage.BindingContext = detailVM;
+                await Application.Current.MainPage.Navigation.PushAsync(detailPage);
+            });
         }
 
         public ObservableCollection<string> AllNotes { get; set; }
@@ -37,7 +45,10 @@ namespace XamarinApp.ViewModels
             }
         }
 
+        public string SelectedNote { get; set; }
+
         public Command SaveCommand { get; }
         public Command EraseCommand { get; }
+        public Command SelectedNoteChangedCommand { get; }
     }
 }
