@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MVVMCoffee.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -7,7 +8,7 @@ using Xamarin.Forms;
 
 namespace XamarinApp.ViewModels
 {
-    public class MainPageViewModel : INotifyPropertyChanged
+    public class MainPageViewModel : BaseViewModel
     {
         public MainPageViewModel()
         {
@@ -15,28 +16,24 @@ namespace XamarinApp.ViewModels
 
             EraseCommand = new Command(() => {
                 TheNote = string.Empty;
+                AllNotes.Clear();
             });
             SaveCommand = new Command(() => {
                 AllNotes.Add(TheNote);
                 TheNote = string.Empty;
-                AllNotes.Clear();
             });
         }
 
         public ObservableCollection<string> AllNotes { get; set; }
-
-        public event PropertyChangedEventHandler PropertyChanged;
 
         string theNote;
 
         public string TheNote
         {
             get => theNote;
-            set {
-                theNote = value;
-                var args = new PropertyChangedEventArgs(nameof(TheNote));
-
-                PropertyChanged?.Invoke(this, args);
+            set
+            {
+                SetProperty(ref theNote, value, nameof(TheNote));
             }
         }
 
