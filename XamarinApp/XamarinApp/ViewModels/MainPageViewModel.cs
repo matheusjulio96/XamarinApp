@@ -29,6 +29,7 @@ namespace XamarinApp.ViewModels
                 var detailPage = new DetailPage();
                 detailPage.BindingContext = detailVM;
                 await Application.Current.MainPage.Navigation.PushAsync(detailPage);
+                SelectedNote = string.Empty;
             });
         }
 

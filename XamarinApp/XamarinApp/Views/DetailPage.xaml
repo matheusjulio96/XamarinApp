@@ -5,11 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="XamarinApp.Views.DetailPage">
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height=".2*"/>
-        </Grid.RowDefinitions>
-    </Grid>
-    <Label Text="a" FontSize="Title" Grid.Row="0" />
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height=".2*"/>
+            </Grid.RowDefinitions>
+            <Label Text="{Binding NoteText}" FontSize="Title" Grid.Row="0" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"/>
+
+            <Button Text="Dismiss"  Grid.Row="1" Command="{Binding DismissPageCommand}"/>
+        </Grid>
+    </ContentPage.Content>
 </ContentPage>

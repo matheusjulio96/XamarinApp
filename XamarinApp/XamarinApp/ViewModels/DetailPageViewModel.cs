@@ -10,6 +10,11 @@ namespace XamarinApp.ViewModels
     {
         public DetailPageViewModel(string note)
         {
+            DismissPageCommand = new Command(async () =>
+            {
+                await Application.Current.MainPage.Navigation.PopAsync();
+            });
+            
             NoteText = note;
         }
 

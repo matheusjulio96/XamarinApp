@@ -33,9 +33,9 @@
                         >
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout>
+                    <StackLayout Padding="10,10">
                         <Frame>
-                            <Label Text="{Binding .}" FontSize="Title"></Label>
+                            <Label Text="{Binding .}" FontSize="Title" VerticalTextAlignment="Center"></Label>
                         </Frame>
                     </StackLayout>
                 </DataTemplate>
